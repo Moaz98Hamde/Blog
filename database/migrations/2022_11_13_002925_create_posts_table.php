@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Category;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,12 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->uuid('id')->primary();
             $table->string('title', 500);
             $table->text('content');
-            $table->string('thumbnail');
+            $table->string('thumbnail')->nullable();
             $table->foreignUuid('user_id');
-            $table->foreignIdFor(Category::class);
             $table->timestamps();
         });
     }

@@ -12,7 +12,7 @@
           <div class="sidebar-menu">
               <ul id="accordion-menu">
                   <li class="dropdown">
-                      <a href="{{route('dashboard')}}" class="dropdown-toggle no-arrow pl-3">
+                      <a href="#" class="dropdown-toggle no-arrow pl-3">
                           <span class="fa fa-home"></span>
                           <span class="mtext px-2">Home</span>
                       </a>
@@ -22,8 +22,8 @@
                           <span class="fa fa-user px-2"></span><span class="mtext">Users</span>
                       </a>
                       <ul class="submenu">
-                          <li><a href="{{route('users')}}">All users</a></li>
-                          <li><a href="{{route('users.create')}}">Add new user</a></li>
+                          <li><a href="#">All users</a></li>
+                          <li><a href="#">Add new user</a></li>
                       </ul>
                   </li>
               </ul>

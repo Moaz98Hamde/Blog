@@ -46,12 +46,22 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <div class="title">
-                                <h4>{{ $page ?? 'blank' }}</h4>
+                                <h4>
+                                    @if (isset($prev))
+                                        <a href="{{ $prev['route'] }}">
+                                            {{ $prev['name'] }}
+                                        </a>
+                                        <span>></span>
+                                    @endif
+                                    <span style="text-decoration: underline">
+                                        {{ $page ?? 'blank' }}
+                                    </span>
+                                </h4>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
+                <div class="pd-20 border-radius-4 mb-30">
                     @yield('content')
                 </div>
             </div>
@@ -68,6 +78,12 @@
     <script src="{{ asset('vendors/scripts/script.min.js') }}"></script>
     <script src="{{ asset('vendors/scripts/process.js') }}"></script>
     <script src="{{ asset('vendors/scripts/layout-settings.js') }}"></script>
+
+    <script>
+        window.laravel_echo_port = '{{ env('LARAVEL_ECHO_PORT') }}';
+    </script>
+    <script src="//{{ Request::getHost() }}:{{ env('LARAVEL_ECHO_PORT') }}/socket.io/socket.io.js"></script>
+    <script src="{{ url('/js/app.js') }}" type="text/javascript"></script>
 
     @stack('scripts')
 </body>

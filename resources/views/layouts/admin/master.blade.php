@@ -48,20 +48,15 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <div class="title">
+                                @if (isset($prev))
+                                    <h4>
+                                        <a href="{{ $prev['route'] }}">
+                                            {{ $prev['name'] }}
+                                        </a>
+                                    </h4>
+                                @endif
                                 <h4>{{ $page ?? 'blank' }}</h4>
                             </div>
-                            @if (isset($breadcrumb) && $breadcrumb)
-                                <nav aria-label="breadcrumb" role="navigation">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item">
-                                            <a href="index.html">Home</a>
-                                        </li>
-                                        <li class="breadcrumb-item active" aria-current="page">
-                                            blank
-                                        </li>
-                                    </ol>
-                                </nav>
-                            @endif
                         </div>
                     </div>
                 </div>

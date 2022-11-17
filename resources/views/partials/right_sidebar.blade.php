@@ -16,7 +16,7 @@
                     <a href="javascript:void(0);" class="btn btn-outline-primary header-dark">Dark</a>
                 </div>
 
-                @if (auth()->user()->hasRole('admin'))
+                {{-- @if (auth()->user()->hasRole('admin')) --}}
                     <h4 class="weight-600 font-18 pb-10">Sidebar Background</h4>
                     <div class="sidebar-btn-group pb-30 mb-10">
                         <a href="javascript:void(0);" class="btn btn-outline-primary sidebar-light">White</a>
@@ -89,7 +89,7 @@
                             Reset Settings
                         </button>
                     </div>
-                @endif
+                {{-- @endif --}}
             </div>
         </div>
     </aside>

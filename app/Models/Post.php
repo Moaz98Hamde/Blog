@@ -18,8 +18,15 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
-        'thumbnail',
     ];
+
+
+    /**
+     * The relationship counts that should be eager loaded on every query.
+     *
+     * @var array
+     */
+    protected $withCount = ['likes', 'comments'];
 
     public function user(){
         return $this->belongsTo(User::class);
@@ -32,4 +39,5 @@ class Post extends Model
     public function likes(){
         return $this->hasMany(Like::class);
     }
+
 }

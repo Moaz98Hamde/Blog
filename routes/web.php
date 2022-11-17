@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\FeedController;
+use App\Http\Controllers\LikesController;
+use App\Http\Controllers\PostsAjaxController;
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +22,15 @@ use Illuminate\Support\Facades\Route;
 // Auth routes
 require __DIR__ . '/auth.php';
 
-Route::redirect('/', '/login', 301);
+Route::redirect('/', '/feed', 301);
+
+
+Route::group(['middleware' => 'auth'],function(){
+    Route::resource('post', PostsController::class);
+    Route::get('/feed', FeedController::class)->name('feed');
+    Route::get('/ajax-posts', PostsAjaxController::class)->name('ajax.posts');
+    Route::resource('/comment', CommentsController::class);
+    Route::resource('/like', LikesController::class);
+});
+
 
