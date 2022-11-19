@@ -1,52 +1,55 @@
-let page = 0, lastPage = 0, currentPage = 0;
+(function () {
+    let page = 0,
+        lastPage = 0,
+        currentPage = 0;
 
-$(window).scroll(function () {
-    // if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+    $(window).scroll(function () {
+        // if ($(window).scrollTop() + $(window).height() == $(document).height()) {
         var ctr = document.querySelector(".main-container");
-    if (
-        $(window).innerHeight() + $(window).scrollTop() >=
-        $(".main-container").height()
-    ) {
-        // Ajax call
-        page++;
-        getData(page);
-    }
-});
-
-function getData() {
-    if (currentPage <= lastPage) {
-        $.ajax({
-            url: "/ajax-posts?page=" + page,
-            type: "get",
-            beforeSend: function () {
-                $(".spinner").show();
-            },
-            success: function (data) {
-                $(".spinner").hide();
-            },
-        })
-            .done(processData)
-            .fail(function (jqXHR, ajaxOptions, thrownError) {
-                alert("server not responding...");
-            });
-    }
-}
-
-function processData(data) {
-    if (data) {
-        if (!lastPage || !currentPage) {
-            lastPage = data.last_page;
-            currentPage = data.current_page;
-        } else {
-            ++currentPage;
+        if (
+            $(window).innerHeight() + $(window).scrollTop() >=
+            $(".main-container").height()
+        ) {
+            // Ajax call
+            page++;
+            getData(page);
         }
-        renderData(data);
-    }
-}
+    });
 
-function renderData(response) {
-    response.data.forEach(function (item) {
-        $template = `<li id=post-"${item.id}">
+    function getData() {
+        if (currentPage <= lastPage) {
+            $.ajax({
+                url: "/post?page=" + page,
+                type: "get",
+                beforeSend: function () {
+                    $(".spinner").show();
+                },
+                success: function (data) {
+                    $(".spinner").hide();
+                },
+            })
+                .done(processData)
+                .fail(function (jqXHR, ajaxOptions, thrownError) {
+                    alert("server not responding...");
+                });
+        }
+    }
+
+    function processData(data) {
+        if (data) {
+            if (!lastPage || !currentPage) {
+                lastPage = data.last_page;
+                currentPage = data.current_page;
+            } else {
+                ++currentPage;
+            }
+            renderData(data);
+        }
+    }
+
+    function renderData(response) {
+        response.data.forEach(function (item) {
+            $template = `<li id=post-"${item.id}">
                         <div class="row no-gutters">
                             <div class="col-lg-4 col-md-12 col-sm-12">
                                 <div class="blog-img" style="background: url(${item.thumbnail}) center center no-repeat;">
@@ -77,6 +80,7 @@ function renderData(response) {
                             </div>
                         </div>
                     </li>`;
-        $(".scrolling-pagination").append($template);
-    });
-}
+            $(".scrolling-pagination").append($template);
+        });
+    }
+})();

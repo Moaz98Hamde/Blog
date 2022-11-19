@@ -74,16 +74,17 @@
     </div>
 
     <!-- js -->
+    <script>
+        window.laravel_echo_port = '{{ env('LARAVEL_ECHO_PORT') }}';
+        window.current_user_id = '{{ auth()->id() }}';
+    </script>
     <script src="{{ asset('vendors/scripts/core.js') }}"></script>
     <script src="{{ asset('vendors/scripts/script.min.js') }}"></script>
     <script src="{{ asset('vendors/scripts/process.js') }}"></script>
     <script src="{{ asset('vendors/scripts/layout-settings.js') }}"></script>
-
-    <script>
-        window.laravel_echo_port = '{{ env('LARAVEL_ECHO_PORT') }}';
-    </script>
     <script src="//{{ Request::getHost() }}:{{ env('LARAVEL_ECHO_PORT') }}/socket.io/socket.io.js"></script>
-    <script src="{{ url('/js/app.js') }}" type="text/javascript"></script>
+    <script src="{{ url('js/laravel-echo.js') }}" type="text/javascript"></script>
+    <script src="{{asset('js/noifications.js')}}"></script>
 
     @stack('scripts')
 </body>

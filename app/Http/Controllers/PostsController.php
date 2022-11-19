@@ -9,6 +9,13 @@ use App\Services\FilesService;
 
 class PostsController extends Controller
 {
+
+    public function index()
+    {
+        return Post::orderBy('created_at', 'DESC')->paginate(2);
+    }
+
+
     public function show(Post $post)
     {
         return view('website.post.show', compact('post'));
@@ -21,8 +28,7 @@ class PostsController extends Controller
         $post->thumbnail = $thumbnailPath;
         $post->save();
 
-        // event(new NewPost($request->user(), $post));
-        broadcast(new NewPost($request->user(), $post));
+        broadcast(new \App\Events\NewPostAdded($request->user(), $post))->toOthers();
 
         abort_unless($post, 500, __('translate.Something went wrong!'));
         $post->comments_count = $post->likes_count = 0;

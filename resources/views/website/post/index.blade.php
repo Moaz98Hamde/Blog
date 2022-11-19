@@ -63,20 +63,6 @@
     <script type="text/javascript" src="{{ asset('vendors/scripts/jquery.form.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendors/scripts/sweetalert2.all.js') }}""></script>
     <script type="text/javascript" src="{{ asset('vendors/scripts/sweet-alert.init.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/infinte-scroll.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/infinite-scroll.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/add-post.js') }}"></script>
-
-    <script src="http://127.0.0.1:6001/socket.io/socket.io.js"></script>
-    <script>
-        var socket = io.connect('http://127.0.0.1:6001');
-
-        // socket.on("connect", (socket) => {
-        //     console.log('connected'); // x8WIv7-mJelg7on_ALbx
-        // });
-        socket.on("new.post", () => { console.log('post added'); });
-        // Echo.channel('posts')
-        //     .listen('.new.post', (e) => {
-        //         console.log(e);
-        //     })
-    </script>
 @endpush

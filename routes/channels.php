@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+Broadcast::channel('new-post-channel', function ($user) {
+    return true;
+});
+
+Broadcast::channel('new-comment-channel.{id}', function ($user, $userId) {
+    return $user->id == $userId;
+});
+
+Broadcast::channel('online-users-channel', function ($user) {
+    return ['id' => $user->id, 'name' => $user->name];
 });
