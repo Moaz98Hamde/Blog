@@ -41,9 +41,25 @@ Blog App is a blogging web application that is built using [Laravel Framework](h
 -   User should be able to see online users statuses in realtime
 
 
+## Requirements
+
+-   node, npm, redis, PHP 8.1, laravel 9.x
+
+
 ## Installation & setup
 
-Install composer packages
+Install laravel-echo-server package
+> $ npm install -g laravel-echo-server
 
+Install composer packages , migrate and seed database
 > $ composer update && php artisan migrate --seed
+
+Run Redis server
+> $ redis-server
+
+Start laravel-echo server
+> $ laravel-echo-server start
+
+Serve your laravel application
+> $ php artisan ser
 
