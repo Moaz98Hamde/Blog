@@ -36,8 +36,8 @@ Blog App is a blogging web application that is built using [Laravel Framework](h
 -   User can comment on a post "uses JQuery Form AJAJX plugin"
 -   User can like a post "uses JQuery Form AJAJX plugin"
 -   Posts are loaded on scrolling "infinite scroll" using custom JS script
--   User should recieve realtime notification when any other particiant publish new post
--   User should recieve realtime notification when any other particiant comments on thier post
+-   User should receive realtime notification when any other participant publish new post
+-   User should receive realtime notification when any other participant comments on their post
 -   User should be able to see online users statuses in realtime
 
 
