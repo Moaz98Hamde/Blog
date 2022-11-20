@@ -57,9 +57,10 @@ Install composer packages , migrate and seed database
 Run Redis server
 > $ redis-server
 
+Serve your laravel application
+> $ php artisan ser
+
 Start laravel-echo server
 > $ laravel-echo-server start
 
-Serve your laravel application
-> $ php artisan ser
 
